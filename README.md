@@ -1,4 +1,4 @@
->[源码地址：rest-tool](https://note.youdao.com/)
+>[源码地址：rest-tool](https://gitee.com/fastbuild/rest-tool.git)
 
 - springboot2.1.4
 - java11
