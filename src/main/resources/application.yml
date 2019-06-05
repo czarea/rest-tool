@@ -1,0 +1,26 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: rest
+  jackson:
+    date-format: "yyyy-MM-dd HH:mm:ss"
+    time-zone: "GMT+8"
+
+
+good-status: 200,203
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ["health","beans","info","conditions"]
+httpclient:
+  close-idle-connection-wait-time-secs: 20
+  default-max-per-route: 10
+  max-total-connections: 100
+  request-timeout: 10000
+  connect-timeout: 10000
+  socket-timeout: 20000
+  default-keep-alive-time-millis: 30000
+  acceptable-status: 200,203

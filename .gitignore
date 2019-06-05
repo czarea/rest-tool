@@ -1,0 +1,61 @@
+*.class
+.DS_Store
+.DS_Store?
+*.swp
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+####################################
+#############packages#############
+####################################
+*.7z
+*.dmg
+*.gz
+*.iso
+*.rar
+*.tar
+*.zip
+
+.gradle
+/build/
+/out/
+/logs/
+bin/
+/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### myeclipse IDEA ###
+.myeclipse
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+nbproject/private/
+build/
+out/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+### logs
+logs/
+/.restart
+.DS_Store 
+*/.DS_Store
+*/.restart
