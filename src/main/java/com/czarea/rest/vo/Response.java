@@ -17,7 +17,8 @@ public class Response<T> implements Serializable {
     private static final long serialVersionUID = -1574275447878553270L;
 
     public static final Response<Void> SUCCESS = new Response<>(200, "success");
-    public static final Response<Void> NO_LOGIN = new Response<>(HttpStatus.NON_AUTHORITATIVE_INFORMATION.value(), "Non-Authoritative Information");
+    public static final Response<Void> NO_LOGIN = new Response<>(HttpStatus.NON_AUTHORITATIVE_INFORMATION.value(),
+        "Non-Authoritative Information");
 
     protected int code = 200;
 

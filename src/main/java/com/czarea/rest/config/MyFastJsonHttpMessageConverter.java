@@ -12,10 +12,6 @@ public class MyFastJsonHttpMessageConverter extends FastJsonHttpMessageConverter
         if (clazz == null) {
             return true;
         }
-        if (clazz.getPackageName().contains("com.czarea.rest")) {
-            return true;
-        } else {
-            return false;
-        }
+        return clazz.getPackage().getName().contains("com.czarea.rest");
     }
 }

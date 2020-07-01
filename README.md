@@ -233,7 +233,15 @@ public class MyUriTemplateHandler implements UriTemplateHandler {
 
 **替换FastJson**
 
-这个比较简单，注册FastJson，加入到MessageConverters列中，但是涉及到上传和下载的时候还是不要使用FastJson的比较好，会有各种坑。这里是简单的解决办法。继承FastJsonHttpMessageConverter覆盖supports方法，只解析自己想要的包下的类。去除（ClassPathResource等文件上传下载解析）
+这个比较简单，注册FastJson，加入到MessageConverters列中，但是涉及到上传和下载的时候还是不要使用FastJson的比较好，会有各种坑。这里是简单的解决办法。继承FastJsonHttpMessageConverter覆盖supports方法，只解析自己想要的包下的类。或者设置fastjson解析的MediaType，只支持JSON解析。
+
+```
+
+FastJsonHttpMessageConverter converter = new FastJsonHttpMessageConverter();
+List<MediaType> supportedMediaTypes = new ArrayList<>();
+supportedMediaTypes.add(MediaType.APPLICATION_JSON);
+converter.setSupportedMediaTypes(supportedMediaTypes);
+```
 
 ```
 public class MyFastJsonHttpMessageConverter extends FastJsonHttpMessageConverter {

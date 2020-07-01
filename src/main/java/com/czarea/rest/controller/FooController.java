@@ -14,9 +14,7 @@ import java.util.Date;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -95,7 +93,6 @@ public class FooController {
         fooList.forEach(item -> {
             if (item.getId().equals(foo.getId())) {
                 BeanUtils.copyProperties(foo, item);
-                return;
             }
         });
         return Response.SUCCESS;

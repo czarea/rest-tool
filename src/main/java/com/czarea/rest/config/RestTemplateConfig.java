@@ -26,7 +26,8 @@ public class RestTemplateConfig {
     }
 
     @Bean
-    public RestTemplateBuilder restTemplateBuilder(MyResponseErrorHandler myResponseErrorHandler,HttpClientRequestFactory httpClientRequestFactory) {
+    public RestTemplateBuilder restTemplateBuilder(MyResponseErrorHandler myResponseErrorHandler,
+        HttpClientRequestFactory httpClientRequestFactory) {
         HttpMessageConverters converters = this.messageConverters.getIfUnique();
         return new RestTemplateBuilder()
             .rootUri("http://localhost:8080")
