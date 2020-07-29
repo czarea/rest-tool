@@ -1,6 +1,5 @@
 package com.czarea.rest.service;
 
-import javax.validation.constraints.NotNull;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -11,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 /**
  * @author zhouzx
  */
-@Component
+//@Component
 public class RestTemplateService {
 
     private final RestTemplate restTemplate;
@@ -29,7 +28,7 @@ public class RestTemplateService {
      * @param <T> 响应类型
      * @return 响应数据
      */
-    public <T> T request(String url, HttpMethod method, @NotNull HttpEntity requestEntity,
+    public <T> T request(String url, HttpMethod method, HttpEntity requestEntity,
         ParameterizedTypeReference<T> parameterizedTypeReference) {
         ResponseEntity<T> responseEntity = restTemplate.exchange(
             url,

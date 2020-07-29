@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 
 /**
- * springmvc fastjson配置类
+ * fastjson message converter
  *
  * @author zhouzx
  */
@@ -37,7 +37,7 @@ public class FastJsonConfiguration {
         fastJsonConfig.setSerializerFeatures(SerializerFeature.WriteMapNullValue, SerializerFeature.WriteBigDecimalAsPlain);
         converter.setFastJsonConfig(fastJsonConfig);
         List<MediaType> supportedMediaTypes = new ArrayList<>();
-        supportedMediaTypes.add(MediaType.APPLICATION_JSON_UTF8);
+        supportedMediaTypes.add(MediaType.APPLICATION_JSON);
         converter.setSupportedMediaTypes(supportedMediaTypes);
         return converter;
     }

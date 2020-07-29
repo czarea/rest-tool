@@ -26,10 +26,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.scheduling.TaskScheduler;
-import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 
 /**
  * 支持http和https，设置连接池和保持连接。清空空闲连接
@@ -37,7 +34,6 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
  * @author zhouzx
  */
 @Configuration
-@EnableScheduling
 public class HttpClientConfig {
 
     private static final Logger logger = LoggerFactory.getLogger(HttpClientConfig.class);
@@ -127,11 +123,4 @@ public class HttpClientConfig {
         };
     }
 
-    @Bean
-    public TaskScheduler taskScheduler() {
-        ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();
-        scheduler.setThreadNamePrefix("poolScheduler");
-        scheduler.setPoolSize(50);
-        return scheduler;
-    }
 }

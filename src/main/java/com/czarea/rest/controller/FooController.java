@@ -2,7 +2,7 @@ package com.czarea.rest.controller;
 
 import com.czarea.rest.vo.Foo;
 import com.czarea.rest.vo.Grid;
-import com.czarea.rest.vo.PageRequest;
+import com.czarea.rest.vo.PageVO;
 import com.czarea.rest.vo.Response;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -15,6 +15,7 @@ import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -44,22 +45,15 @@ public class FooController {
     }
 
     @GetMapping("/foos")
-    public Response<Grid<Foo>> list(Page page) {
-        Integer offset = page.getOffset();
-        Integer size = page.getLimit();
+    public Response<Grid<Foo>> list(@Validated PageVO page) {
+        Integer offset = page.getCurrent();
+        Integer size = page.getSize();
         int lastSize = offset * size + size;
 
         List<Foo> list = new ArrayList<>();
         for (int i = offset * size; i < fooList.size(); i++) {
             if (i < lastSize) {
-                if (page.getFilter() == null) {
-                    list.add(fooList.get(i));
-                } else {
-                    if (fooList.get(i).getName().equalsIgnoreCase(page.getFilter().getName())) {
-                        list.add(fooList.get(i));
-                        break;
-                    }
-                }
+                list.add(fooList.get(i));
             }
         }
         return new Response<>(new Grid<>(fooList.size(), fooList.size() / size, list));
@@ -113,10 +107,4 @@ public class FooController {
         return Response.SUCCESS;
     }
 
-    public static class Page extends PageRequest<Foo> {
-
-        public Page(Integer offset, Integer limit, com.czarea.rest.vo.Foo filter) {
-            super(offset, limit, filter);
-        }
-    }
 }

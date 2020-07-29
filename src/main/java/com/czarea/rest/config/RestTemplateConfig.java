@@ -26,13 +26,12 @@ public class RestTemplateConfig {
     }
 
     @Bean
-    public RestTemplateBuilder restTemplateBuilder(MyResponseErrorHandler myResponseErrorHandler,
-        HttpClientRequestFactory httpClientRequestFactory) {
+    public RestTemplateBuilder restTemplateBuilder(HttpClientRequestFactory httpClientRequestFactory) {
         HttpMessageConverters converters = this.messageConverters.getIfUnique();
         return new RestTemplateBuilder()
             .rootUri("http://localhost:8080")
             .uriTemplateHandler(new MyUriTemplateHandler())
-            .errorHandler(myResponseErrorHandler)
+            //.errorHandler(myResponseErrorHandler)
             .requestFactory(httpClientRequestFactory)
             .messageConverters(converters.getConverters())
             .additionalInterceptors(new RestHttpRequestInterceptor());
